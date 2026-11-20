@@ -1,0 +1,35 @@
+name: LiquidClipboard
+options:
+  bundleIdPrefix: com.ryan.liquidclipboard
+  deploymentTarget:
+    iOS: "26.0"
+
+targets:
+  ClipBoardApp:
+    type: application
+    platform: iOS
+    sources:
+      - path: ClipBoardApp
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.ryan.liquidclipboard.app
+        INFOPLIST_FILE: ClipBoardApp/Info.plist
+        CODE_SIGN_ENTITLEMENTS: ClipBoardApp/ClipBoardApp.entitlements
+        SWIFT_VERSION: "6.0"
+        TARGETED_DEVICE_FAMILY: "1"
+    dependencies:
+      - target: ClipBoardExtension
+        embed: true
+
+  ClipBoardExtension:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: ClipBoardExtension
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.ryan.liquidclipboard.app.keyboard
+        INFOPLIST_FILE: ClipBoardExtension/Info.plist
+        CODE_SIGN_ENTITLEMENTS: ClipBoardExtension/ClipBoardExtension.entitlements
+        SWIFT_VERSION: "6.0"
+        TARGETED_DEVICE_FAMILY: "1"
